@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EHR | Ischemic Heart Disease Case</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#657089;--primary:#1769aa;--primary2:#0d4f83;--line:#dce3ed;--danger:#b42318;--ok:#087443}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#0d4f83,#1769aa);color:white;padding:22px 28px;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:24px}header p{margin:5px 0 0;opacity:.85}
+.layout{display:flex;min-height:calc(100vh - 90px)}nav{width:250px;background:#102a43;color:white;padding:18px 12px;position:sticky;top:90px;height:calc(100vh - 90px)}
+nav button{display:block;width:100%;border:0;background:transparent;color:#dbeafe;text-align:left;padding:12px 14px;border-radius:8px;margin:4px 0;cursor:pointer;font-size:14px}
+nav button:hover,nav button.active{background:#1769aa;color:#fff}.content{flex:1;padding:26px;max-width:1500px;margin:auto;width:100%}
+section{display:none}section.active{display:block}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 8px #15233b0b;margin-bottom:18px}
+.card h2,.card h3{margin-top:0}.stat{font-size:26px;font-weight:700}.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{background:#f7f9fc;color:#45546c}
+.badge{display:inline-block;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:600;background:#eaf3fb;color:#0d4f83}.danger{background:#fdecea;color:var(--danger)}.ok{background:#e9f7ef;color:var(--ok)}
+.formgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}label{font-size:13px;font-weight:600}input,textarea,select{width:100%;margin-top:6px;padding:9px;border:1px solid #cfd8e3;border-radius:7px;font:inherit;background:white}textarea{min-height:90px;resize:vertical}
+button.primary{background:var(--primary);color:white;border:0;padding:10px 15px;border-radius:7px;cursor:pointer}.notice{padding:12px;border-left:4px solid var(--primary);background:#eef6fd;border-radius:6px;color:#35516d}
+.alert{padding:12px;border-left:4px solid var(--danger);background:#fff2f0;border-radius:6px;color:#7a271a}
+footer{color:var(--muted);font-size:12px;margin:30px 0;text-align:center}
+@media(max-width:900px){nav{width:190px}.grid{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.layout{display:block}nav{width:100%;height:auto;position:static;display:flex;overflow:auto}nav button{min-width:max-content}.content{padding:15px}.grid,.formgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Electronic Health Record</h1>
+  <p>Ischemic Heart Disease Case • Nursing Informatics Laboratory • Educational/Demonstration Record</p>
+</header>
+
+<div class="layout">
+<nav id="nav">
+  <button class="active" onclick="show('dashboard',this)">Dashboard</button>
+  <button onclick="show('bio',this)">Biographical Data</button>
+  <button onclick="show('history',this)">Past Medical History</button>
+  <button onclick="show('assessment',this)">Health Assessment</button>
+  <button onclick="show('orders',this)">Doctor's Order Sheet</button>
+  <button onclick="show('treatment',this)">Treatment Record</button>
+  <button onclick="show('labs',this)">Laboratory Sheet</button>
+  <button onclick="show('io',this)">Input & Output</button>
+  <button onclick="show('notes',this)">Nurse's Notes</button>
+  <button onclick="show('iv',this)">IV Flow Record</button>
+</nav>
+
+<main class="content">
+
+<section id="dashboard" class="active">
+<div class="card">
+<h2>Patient Overview</h2>
+<div class="alert"><b>Clinical status:</b> The case scenario reports recurrent cardiac arrest following admission. The final arrest was irreversible and the patient died at 5:45 AM on December 30, 2023.</div>
+</div>
+<div class="grid">
+<div class="card"><div class="label">Age / Sex</div><div class="stat">67 / Female</div></div>
+<div class="card"><div class="label">Primary Case</div><div class="stat">IHD</div><small>Ischemic Heart Disease</small></div>
+<div class="card"><div class="label">Admission BP</div><div class="stat">100/60</div><small>mmHg</small></div>
+<div class="card"><div class="label">Admission HR</div><div class="stat">100</div><small>bpm</small></div>
+</div>
+<div class="card">
+<h3>Key Clinical Findings</h3>
+<ul>
+<li>Severe chest pain lasting approximately one hour on December 30, 2023.</li>
+<li>History of myocardial infarction in April 2023.</li>
+<li>70% obstruction reported in the right coronary, anterior descending, and circumflex arteries.</li>
+<li>Apical akinesia with signs of intracavitary thrombus.</li>
+<li>May 2023 echocardiogram: diffuse hypokinesis and 28% left ventricular ejection fraction.</li>
+<li>October 2023 cerebrovascular accident with motor sequela.</li>
+<li>Right-sided large pleural effusion on chest X-ray.</li>
+<li>Seizure and multiple episodes of cardiac arrest after admission.</li>
+</ul>
+</div>
+</section>
+
+<section id="bio">
+<div class="card"><h2>Patient's Biographical Data</h2>
+<div class="formgrid">
+<div><label>Patient Name</label><input value="Patient X" readonly></div>
+<div><label>Case Number</label><input value="NCM10-IHD-001" readonly></div>
+<div><label>Age</label><input value="67 years old" readonly></div>
+<div><label>Sex</label><input value="Female" readonly></div>
+<div><label>Date of Birth</label><input value="July 14, 1956" readonly></div>
+<div><label>Date of Admission</label><input value="December 30, 2023" readonly></div>
+<div><label>Address</label><input value="Brgy. San Isidro, Pasig City" readonly></div>
+<div><label>Civil Status</label><input value="Married" readonly></div>
+<div><label>Nationality</label><input value="Filipino" readonly></div>
+<div><label>Religion</label><input value="Roman Catholic" readonly></div>
+<div><label>Occupation</label><input value="Retired Public School Teacher" readonly></div>
+<div><label>Contact Number</label><input value="0917-555-2841" readonly></div>
+<div><label>Emergency Contact</label><input value="Maria Santos (Daughter) - 0918-632-1458" readonly></div>
+<div><label>Primary Case</label><input value="Ischemic Heart Disease" readonly></div>
+<div><label>Chief Complaint</label><input value="Severe/prolonged chest pain" readonly></div>
+<div><label>Source</label><input value="Clinical case scenario" readonly></div>
+</div></div>
+</section>
+
+<section id="history">
+<div class="card"><h2>Patient's Past Medical History</h2>
+<table><tr><th>Condition/Event</th><th>Details from Case Scenario</th></tr>
+<tr><td>Myocardial infarction</td><td>Diagnosed after prolonged chest pain and hospital admission in April 2023.</td></tr>
+<tr><td>Hypertension</td><td>Documented as a pre-existing condition.</td></tr>
+<tr><td>Diabetes mellitus</td><td>Documented as a pre-existing condition.</td></tr>
+<tr><td>Dyslipidemia</td><td>Documented as a pre-existing condition.</td></tr>
+<tr><td>Smoking</td><td>Patient was a smoker.</td></tr>
+<tr><td>Coronary artery disease</td><td>Coronary angiography disclosed 70% obstruction in the right coronary, anterior descending, and circumflex arteries.</td></tr>
+<tr><td>Ventricular dysfunction</td><td>May 2023 echocardiogram showed diffuse hypokinesis and LVEF of 28%.</td></tr>
+<tr><td>Cerebrovascular accident</td><td>Occurred in October 2023 with motor sequela.</td></tr>
+</table></div>
+</section>
+
+<section id="assessment">
+<div class="card"><h2>Health Assessment</h2>
+<table><tr><th>Assessment Area</th><th>Finding</th></tr>
+<tr><td>Chief Complaint</td><td>Severe/prolonged chest pain lasting one hour.</td></tr>
+<tr><td>Heart Rate</td><td>100 bpm at physical examination.</td></tr>
+<tr><td>Blood Pressure</td><td>100/60 mmHg.</td></tr>
+<tr><td>Pulmonary Assessment</td><td>Normal on physical examination.</td></tr>
+<tr><td>Cardiac Examination</td><td>++/6+ systolic murmur in the mitral area.</td></tr>
+<tr><td>Other Physical Findings</td><td>Remainder of physical examination reported as normal.</td></tr>
+<tr><td>ECG</td><td>Sinus rhythm; HR 103 bpm; PR 122 ms; QRS 159 ms; QT 367 ms; QTc 480 ms; left atrial overload; low-voltage QRS in frontal plane; probable inferior electrically inactive area; left bundle branch block.</td></tr>
+<tr><td>Chest X-ray</td><td>Large pleural effusion in the right hemithorax.</td></tr>
+<tr><td>Neurologic Event</td><td>Seizures occurred approximately two hours after admission.</td></tr>
+</table></div>
+</section>
+
+<section id="orders">
+<div class="card"><h2>Doctor's Order Sheet</h2>
+<div class="notice">Specific physician orders and medication prescriptions were not provided in the supplied case scenario. They are intentionally not invented in this educational EHR.</div>
+<table><tr><th>Date/Time</th><th>Order</th><th>Status</th></tr>
+<tr><td>Dec. 30, 2023</td><td>Medical care/hospital admission for severe chest pain</td><td><span class="badge">Documented</span></td></tr>
+<tr><td>Dec. 30, 2023</td><td>Further diagnostic evaluation as documented in the case (ECG, chest X-ray, laboratory testing)</td><td><span class="badge">Documented</span></td></tr>
+</table></div>
+</section>
+
+<section id="treatment">
+<div class="card"><h2>Treatment Record</h2>
+<div class="notice">The case states that clinical and drug treatment was recommended after the May 2023 findings, but it does not specify the medications or exact treatment regimen.</div>
+<table><tr><th>Date</th><th>Clinical Treatment/Event</th><th>Outcome/Note</th></tr>
+<tr><td>Apr 2023</td><td>Hospital admission following prolonged chest pain; myocardial infarction diagnosed.</td><td>Documented history.</td></tr>
+<tr><td>2023</td><td>Coronary angiography</td><td>70% obstruction in three reported coronary arteries.</td></tr>
+<tr><td>May 2023</td><td>Echocardiogram and clinical/drug treatment recommendation</td><td>LVEF 28%; diffuse hypokinesis.</td></tr>
+<tr><td>Oct 2023</td><td>Cerebrovascular accident</td><td>Motor sequela.</td></tr>
+<tr><td>Dec 30, 2023</td><td>Hospital admission for severe chest pain</td><td>Subsequent seizures and recurrent cardiac arrest.</td></tr>
+</table></div>
+</section>
+
+<section id="labs">
+<div class="card"><h2>Laboratory Sheet</h2>
+<table><tr><th>Test</th><th>Result</th><th>Unit</th></tr>
+<tr><td>Hemoglobin</td><td>13</td><td>g/dL</td></tr>
+<tr><td>Hematocrit</td><td>40</td><td>%</td></tr>
+<tr><td>MCV</td><td>91</td><td>fL</td></tr>
+<tr><td>Leukocytes</td><td>12,400</td><td>/mm³</td></tr>
+<tr><td>Neutrophils</td><td>66</td><td>%</td></tr>
+<tr><td>Eosinophils</td><td>1</td><td>%</td></tr>
+<tr><td>Basophils</td><td>1</td><td>%</td></tr>
+<tr><td>Lymphocytes</td><td>19</td><td>%</td></tr>
+<tr><td>Monocytes</td><td>13</td><td>%</td></tr>
+<tr><td>Platelets</td><td>421,000</td><td>/mm³</td></tr>
+<tr><td>Total Cholesterol</td><td>228</td><td>mg/dL</td></tr>
+<tr><td>HDL-Cholesterol</td><td>35</td><td>mg/dL</td></tr>
+<tr><td>LDL-Cholesterol</td><td>162</td><td>mg/dL</td></tr>
+<tr><td>Triglycerides</td><td>157</td><td>mg/dL</td></tr>
+<tr><td>CK-MB mass</td><td>5.63</td><td>ng/mL</td></tr>
+<tr><td>Troponin I</td><td>0.21</td><td>ng/mL</td></tr>
+<tr><td>Urea</td><td>33</td><td>mg/dL</td></tr>
+<tr><td>Creatinine</td><td>0.66</td><td>mg/dL</td></tr>
+<tr><td>Sodium</td><td>137</td><td>mEq/L</td></tr>
+<tr><td>Potassium</td><td>3.4</td><td>mEq/L</td></tr>
+<tr><td>pH</td><td>7.46</td><td>-</td></tr>
+<tr><td>pCO₂</td><td>39.3</td><td>mmHg</td></tr>
+<tr><td>pO₂</td><td>36.3</td><td>mmHg</td></tr>
+<tr><td>O₂ Saturation</td><td>62.7</td><td>%</td></tr>
+<tr><td>Bicarbonate</td><td>27.7</td><td>mEq/L</td></tr>
+<tr><td>Base Excess</td><td>4.1</td><td>mEq/L</td></tr>
+</table></div>
+</section>
+
+<section id="io">
+<div class="card"><h2>Monitoring of Input and Output Record Sheet</h2>
+<div class="notice">Input and output measurements were not provided in the case scenario.</div>
+<table><tr><th>Time</th><th>Oral/Enteral Input</th><th>IV Input</th><th>Urine Output</th><th>Other Output</th><th>Total</th></tr>
+<tr><td>Admission</td><td>600 mL</td><td>1000 mL NS</td><td>850 mL</td><td>0 mL</td><td>1600 mL Intake / 850 mL Output</td></tr></table></div>
+</section>
+
+<section id="notes">
+<div class="card"><h2>Nurse's Notes</h2>
+<table><tr><th>Date/Time</th><th>Notes</th></tr>
+<tr><td>Dec 30, 2023<br>Admission</td><td>67-year-old woman sought medical care for severe chest pain lasting approximately one hour. HR 100 bpm; BP 100/60 mmHg. Pulmonary assessment normal. ++/6+ systolic murmur noted in mitral area.</td></tr>
+<tr><td>~2 hours after admission</td><td>Patient developed seizures and cardiac arrest with pulseless electrical activity. Cardiac arrest was reversed in 5 minutes.</td></tr>
+<tr><td>20 minutes later</td><td>New cardiac arrest occurred and was reversed.</td></tr>
+<tr><td>~30 minutes later</td><td>Another episode of cardiac arrest occurred and was irreversible. Patient died at 5:45 AM on December 30, 2023.</td></tr>
+</table></div>
+</section>
+
+<section id="iv">
+<div class="card"><h2>IV Flow Record Sheet</h2>
+<div class="notice">IV fluid, solution, rate, site, and amount were not provided in the case scenario.</div>
+<table><tr><th>Date/Time</th><th>IV Solution</th><th>Rate</th><th>Site</th><th>Amount</th><th>Remarks</th></tr>
+<tr><td>Dec 30, 2023</td><td>0.9% Normal Saline 1 L</td><td>75 mL/hr</td><td>Left Forearm</td><td>1000 mL</td><td>Infusion completed; site patent, no infiltration</td></tr></table></div>
+</section>
+
+
+</main>
+</div>
+<script>
+function show(id,btn){
+ document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
